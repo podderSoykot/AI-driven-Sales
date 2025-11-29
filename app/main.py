@@ -1,5 +1,4 @@
 import json
-import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.routes import router, set_search_engine
