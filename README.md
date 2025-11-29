@@ -516,20 +516,43 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000
 ```
 
 ### Option 2: Docker (Recommended for Production)
-```dockerfile
-FROM python:3.9-slim
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-COPY . .
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+
+#### Using Dockerfile
+```bash
+# Build the image
+docker build -t ats-search-engine .
+
+# Run the container
+docker run -d -p 8000:8000 --name ats-api ats-search-engine
 ```
 
+#### Using Docker Compose (Easiest)
+```bash
+# Start the service
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+
+# Stop the service
+docker-compose down
+```
+
+The API will be available at `http://localhost:8000`
+
+**Docker Features:**
+- ✅ Health checks included
+- ✅ Automatic restart on failure
+- ✅ Volume mounting for data persistence
+- ✅ Optimized multi-stage build
+- ✅ Production-ready configuration
+
 ### Option 3: Cloud Platforms
-- **AWS**: Deploy on EC2, ECS, or Lambda
+- **AWS**: Deploy on EC2, ECS, EKS, or Lambda
 - **Google Cloud**: Cloud Run or App Engine
 - **Azure**: App Service or Container Instances
 - **Heroku**: Direct deployment support
+- **DigitalOcean**: App Platform or Droplets
 
 ---
 
