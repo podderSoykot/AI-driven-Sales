@@ -1,0 +1,371 @@
+{
+	"info": {
+		"_postman_id": "ats-api-collection",
+		"name": "ATS API - Adaptive Transformer Search",
+		"description": "Postman collection for Adaptive Transformer Search (ATS) Backend API - AI-powered semantic search engine for eCommerce products",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "ats-api"
+	},
+	"item": [
+		{
+			"name": "Health",
+			"item": [
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/health",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"health"
+							]
+						},
+						"description": "Check the health status of the API and verify if the model and products are loaded."
+					},
+					"response": []
+				}
+			],
+			"description": "Health check endpoints"
+		},
+		{
+			"name": "Search",
+			"item": [
+				{
+					"name": "Search Products - Basic",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\": \"wireless headphones\",\n  \"top_k\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/search",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"search"
+							]
+						},
+						"description": "Perform a basic semantic search for products using natural language queries."
+					},
+					"response": []
+				},
+				{
+					"name": "Search Products - With Filters",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\": \"wireless headphones\",\n  \"top_k\": 10,\n  \"category\": \"Electronics\",\n  \"min_price\": 50.0,\n  \"max_price\": 200.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/search",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"search"
+							]
+						},
+						"description": "Search products with category and price filters applied."
+					},
+					"response": []
+				},
+				{
+					"name": "Search Products - Semantic Query Examples",
+					"item": [
+						{
+							"name": "Find workout gear",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"query\": \"workout gear\",\n  \"top_k\": 5\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/search",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"search"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Something to carry laptop",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"query\": \"something to carry my laptop\",\n  \"top_k\": 5\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/search",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"search"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Device to charge phone",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"query\": \"device to charge my phone\",\n  \"top_k\": 5\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/search",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"search"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Comfortable running shoes",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"query\": \"comfortable shoes for running\",\n  \"top_k\": 5\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/search",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"search"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Example semantic search queries that demonstrate the AI's understanding of intent"
+				}
+			],
+			"description": "Search endpoints for finding products using semantic search"
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Get Product by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/products/prod_001",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"prod_001"
+							],
+							"variable": [
+								{
+									"key": "product_id",
+									"value": "prod_001",
+									"description": "Product ID"
+								}
+							]
+						},
+						"description": "Retrieve a specific product by its ID."
+					},
+					"response": []
+				}
+			],
+			"description": "Product retrieval endpoints"
+		},
+		{
+			"name": "Indexing",
+			"item": [
+				{
+					"name": "Index New Products",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"id\": \"prod_016\",\n    \"title\": \"New Product Example\",\n    \"description\": \"This is a new product that will be indexed into the search engine\",\n    \"category\": \"Electronics\",\n    \"price\": 99.99,\n    \"brand\": \"ExampleBrand\",\n    \"image_url\": \"https://example.com/product.jpg\",\n    \"in_stock\": true,\n    \"rating\": 4.5,\n    \"tags\": [\"new\", \"example\", \"electronics\"]\n  }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/index/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"index",
+								"products"
+							]
+						},
+						"description": "Add new products to the search index. Products will be immediately searchable after indexing."
+					},
+					"response": []
+				},
+				{
+					"name": "Index Multiple Products",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"id\": \"prod_017\",\n    \"title\": \"Product One\",\n    \"description\": \"First product description\",\n    \"category\": \"Clothing\",\n    \"price\": 49.99,\n    \"in_stock\": true\n  },\n  {\n    \"id\": \"prod_018\",\n    \"title\": \"Product Two\",\n    \"description\": \"Second product description\",\n    \"category\": \"Accessories\",\n    \"price\": 29.99,\n    \"in_stock\": true\n  }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/index/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"index",
+								"products"
+							]
+						},
+						"description": "Index multiple products at once."
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints for adding products to the search index"
+		},
+		{
+			"name": "Info",
+			"item": [
+				{
+					"name": "API Root",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "Get API information and available endpoints."
+					},
+					"response": []
+				}
+			],
+			"description": "API information endpoints"
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		}
+	]
+}
+
